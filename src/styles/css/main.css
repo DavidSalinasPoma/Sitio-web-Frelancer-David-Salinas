@@ -1,0 +1,468 @@
+/* Definicion de paleta de colores para el proyecto */
+/*** :root almacena variables de css ****/
+:root {
+
+    /* Paleta de colores */
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+
+    /* Definicion de fuentes */
+    /* --fuente-principal: 3.8rem; */
+
+}
+
+/**** Fin definicioón de paleta de colores ****/
+
+
+/**** Hack para el uso de los REM en css *****/
+html {
+    /* Paso 1.- se reinicia el tamaño de la fuente */
+    font-size: 62.5%;
+
+    /* Css box model */
+    box-sizing: border-box;
+
+}
+
+/* CSS BOX MODEL**  https://www.paulirish.com/2012/box-sizing-border-box-ftw/     **revizar*/
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* FIN CSS BOX MODEL */
+
+body {
+    /* Paso 2.-  */
+    font-size: 16px;
+    font-family: 'Krub',
+        sans-serif;
+
+    /* Utilizar CSSMATIC.COM */
+    /* Usar degradado de fondo de abjo hacia arriba */
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+/* Con este hack 1 REM = 10px */
+/**** Fin hack *****/
+
+
+/** Bloques y modificadores globales **/
+
+.sombra {
+    -webkit-box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.43);
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.43);
+}
+
+/* bloque */
+.btn {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 2rem;
+    font-size: 1.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+
+.btn:hover {
+    cursor: pointer;
+}
+
+/* Modificador */
+.btn--todo-ancho {
+    width: 100%;
+}
+
+@media(min-width: 768px) {
+    .btn {
+        width: auto;
+    }
+}
+
+/** FIN Bloques y modificadores globales **/
+
+
+/****** header **********/
+
+/* Enfoque de experiancia propia Definir una tipografia */
+
+/* bloque */
+.titulo-h1 {
+    font-size: 2.8rem;
+}
+
+/* bloque */
+.titulo-h2 {
+    font-size: 3.8rem;
+}
+
+/* bloque */
+.titulo-h3 {
+    font-size: 2.5rem;
+}
+
+
+/* Estilo Modulos */
+.titulo-h1,
+.titulo-h2,
+.titulo-h3 {
+    text-align: center;
+}
+
+/* FIN Enfoque de experiancia propia */
+
+
+/* Modificador */
+.titulo-h1--color {
+    /* text-align: center; */
+    /* 3.8rem = 38px */
+    /* 1 rem = 10px*/
+    /*Asi se utiliza las variables en css*/
+    color: var(--oscuro);
+
+}
+
+/* Elemento */
+.header__titulo-small {
+    font-size: 2rem;
+}
+
+/* Modificador */
+.titulo-h2--color {
+    color: var(--blanco);
+}
+
+/* Bloque boton */
+
+
+/****** Fin header ******/
+
+
+/** Clases Globales como modificadores Utilidad**/
+.contenedor {
+
+    /*width: 120rem; => Es una pocision fija*/
+    /*max-width: 120rem; => Es decir toma 1200px, como maximo y solamente si hay ese espacio disponible. Si no toma el ancho disponible por defecto.
+    */
+    max-width: 120rem;
+
+    /* Centrando el elemento */
+    margin: 0 auto;
+}
+
+.border {
+    border: .1rem solid var(--oscuro);
+}
+
+/** Fin clases globales **/
+
+
+/* ****Navegacion Principal**** */
+/* NOTA IMPORTANTE DE FLEXBOX */
+/* flex-direction: row == justify-content: */
+/* flex-direction: column == align-items: */
+
+/* Elemento */
+.nav__principal {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Aplicando responsive Web Desing */
+@media(min-width: 768px) {
+    .nav__principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+/* Elemento */
+.nav__link {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1.6rem 3.2rem;
+    display: block;
+    text-align: center;
+}
+
+/* Utilizando pseudoElemento HOVER */
+.nav__link:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* Modificador de bloque */
+.nav--bg {
+    background-color: var(--secundario);
+}
+
+/* Tema lección DISPLAY */
+/*
+1.- Display: block.- Significa que los elementos se colocan uno debajo  del otro sin importar su tamaño o contenido.
+2.- Display: Inline .- Significa que el elemento se posicionara a la derecha una vex que haya tomado el espacio que requiere.(a, img) etc.
+ */
+/* ****Fin navegacion principal**** */
+
+
+
+/* ****Sección Hero imagen de fondo con letras**** */
+/* Bloque */
+.hero {
+    background-image: url('../../assets/img/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    /* padding: 20px; */
+
+    /* Posicion relativa y absoluto */
+
+    /* Este es el selector padre y siempre tendra posision releativa */
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Elemento */
+.hero__contenido {
+    /* El selector hijo tendra una posision Obsoluta por que se quiere posicionar de forma absoluta en el padre  */
+    position: absolute;
+
+    /* Tomar todo el campo del padre */
+    width: 100%;
+    height: 100%;
+
+    /* Sintaxis anterior Anterior */
+    /* background-color: rgb(0, 0, 0, .7); */
+    background-color: rgb(0 0 0 / 70%);
+
+
+    /* Alineando el contenido que se encuentra dentro del hero */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    /* Tema Alinear Verticalmente con flexBox en flex direccion Column */
+    justify-content: center;
+
+}
+
+/*Esto Metodologia css MODULOS*/
+.hero__titulo,
+.hero__ciudad {
+    color: var(--blanco);
+}
+
+.hero__ubicacion {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.hero__ciudad {
+    align-self: flex-end;
+    margin: 0;
+}
+
+/* ****Fin Sección imagen de fondo HERO **** */
+
+
+/** MAIN contenido principal-servicios **/
+/* Bloque */
+.main {
+    background-color: var(--blanco);
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: 4.8rem;
+}
+
+/* Utilizando css GRID */
+/* Conceptos.- En css Grid se tiene acceso a las dos dimenciones
+es decir que se puede definir contenido de isquierda a derecha o
+de arriba hacia abajo.
+
+A diferencia de flexbox que solo se puede mover en una sola direccion por declaración.
+
+*/
+@media(min-width: 768px) {
+
+    /* Elemento */
+    .main__contenedor {
+        display: grid;
+
+        /* Version Larga */
+        /* grid-template-columns: 300px 300px;
+    grid-template-rows: 200px 800px; */
+
+        /* Utilizando una versión Corta */
+        /* Primero los ROWS y luego los COLUMNS */
+        /* grid: 200px 800px/300px 300px; */
+
+        /* Utilizaremos la version Larga */
+        /* grid-template-columns: 33.3% 33.3% 33.3%; */
+
+        /* Repeat(3,1fr) Significa repite 3 veces 1 FR*/
+        grid-template-columns: repeat(3, 1fr);
+
+        /* Separación entre columnas */
+        column-gap: 1rem;
+    }
+
+}
+
+.main__servicios {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.main__icono {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+
+    /* Para alinear verticalmente */
+    align-items: center;
+
+}
+
+.main__parrafo-descripcion {
+    /* Este es solo numeral */
+    line-height: 2;
+    text-align: center;
+}
+
+/* Modificador */
+.titulo-h3--color {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+/* Sección Formulario de contacto */
+.contacto__formulario {
+    background-color: var(--gris);
+
+    /* 
+    Concepto MIN: es una funcion con dos parametros
+    Lo que hace min es utilizar el valor mas pequeño 
+    ES NUEVA FUNCION
+    */
+    width: min(80rem, 100%);
+
+    /* Centrar el formulario sin display flex */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contacto__tarjeta {
+    border: none;
+}
+
+.contacto_legent {
+    color: var(--primario);
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+/* Utilizando GRID para los campos */
+@media(min-width: 768px) {
+    .contacto__contenedor-campos {
+        display: grid;
+        /* Para fraccionar ñas columnas */
+        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-rows: auto auto; */
+        /* para separar las columnas */
+        column-gap: 1rem;
+
+    }
+
+    /* Posicionando elementos con GRID */
+    .contacto__campo:nth-child(3),
+    .contacto__campo:nth-child(4) {
+        grid-column: 1/3;
+    }
+
+}
+
+/* Utilizando FIN GRID para los campos */
+
+
+.contacto__campo {
+    margin-bottom: 1rem;
+
+}
+
+.contacto__etiqueta {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+
+    /* Con esto toma todo el ancho */
+    display: block;
+
+    /* alinienado hijo con flex */
+    align-self: center;
+}
+
+/* Estilos a los inputs es algo especial*/
+.contacto__text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+
+}
+
+/* Modificador */
+.contacto__text--text-area {
+    height: 20rem;
+}
+
+.contacto__enviar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+
+
+/* Fin Sección Formulario de contacto */
+
+/** FIN MAIN contenido principal-servicios **/
+
+
+
+/** FOOTER **/
+.footer {
+    text-align: center;
+}
+
+/** FIN FOOTER **/

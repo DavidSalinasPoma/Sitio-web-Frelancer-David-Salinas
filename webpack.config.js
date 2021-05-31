@@ -1,13 +1,20 @@
+
+
 const path = require('path');
 
 // Inyección de archivo js a html con plugin
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// Extrae el archivo css del bundle
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
-    entry: './src/js/app.js',
+    entry: {
+        app: './src/app.js',
+    },
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: "[name].[contentHash].bundle.js",
+        filename: "[name].[chunkhash].js",
     },
     // mode: 'development',
     devtool: 'source-map',
@@ -33,10 +40,15 @@ module.exports = {
                 ],
             },
             {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            },
+            {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
                             name: "[name].[hash].[ext]",
                             outputPath: "assets/",
@@ -57,12 +69,21 @@ module.exports = {
             },
         ]
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             // title: "Webpack Por DavidSalinas",
             template: "./src/index.html",
             filename: "./index.html",
+            chunks: ["app"],
+            hash: true,
             inject: "body"
         }),
+
+        //  Nuevo Plugin
+        new MiniCssExtractPlugin({
+            filename: "styles/css/[name]-styles.css",
+
+        })
     ]
 };

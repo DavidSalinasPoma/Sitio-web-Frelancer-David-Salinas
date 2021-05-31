@@ -1,5 +1,5 @@
 {
-  "name": "webpack-eslint",
+  "name": "webpack-freelancer",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -17,15 +17,19 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.5",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "rimraf": "^3.0.2"
   }
 }
