@@ -8,6 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Extrae el archivo css del bundle
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// Para minimizar el css para produccion
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
 module.exports = {
     entry: {
         app: './src/app.js',
@@ -85,5 +88,10 @@ module.exports = {
             filename: "styles/css/[name]-styles.css",
 
         })
-    ]
+    ],
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+    },
 };
